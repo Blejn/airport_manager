@@ -1,0 +1,22 @@
+<div (click)="closeModal()" #background  class="container_background" ></div>
+<div  class="container">
+ <div class="card">
+    <div class="card_title">
+        <h1>You're not logged!</h1>
+    </div>
+    <div class="card_content">
+      If you want flight with us you have to create account
+    </div>
+    <div class="card_action">
+            <button class="card_button" (click)="closeModal()" mat-raised-button color="primary">Cancel</button>
+
+            <button class="card_button" (click)="goToLogin()" mat-raised-button color="accent">Login</button>
+
+
+    </div>
+
+ </div>
+</div>
+
+
+

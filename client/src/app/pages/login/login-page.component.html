@@ -1,0 +1,235 @@
+<div *ngIf="loginMode" class="card">
+  <div class="title"><h1>Please sign in</h1></div>
+  <!-- ----------------------Login MODE--------------------------- -->
+
+  <div class="form">
+    <form [formGroup]="form" (submit)="submitLoginHandler()">
+      <label class="label"
+        >Username<input
+          placeholder="username..."
+          formControlName="username"
+          onfocus="this.placeholder = ''"
+          onblur="this.placeholder='passsword...'"
+          type="text"
+          required
+      /></label>
+
+      <div
+        class="error"
+        *ngIf="
+          registerForm.get('username')?.dirty &&
+          registerForm.get('username')?.touched
+        "
+      >
+        <small *ngIf="registerForm.get('username')?.errors?.['required']">
+          Username is invalid
+        </small>
+        <p *ngIf="registerForm.get('username')?.errors?.['usernameExist']">
+          Username already exist
+        </p>
+      </div>
+
+      <label class="label">
+        Password
+        <input
+          placeholder="password..."
+          formControlName="password"
+          type="password"
+          required
+          onfocus="this.placeholder = ''"
+          onblur="this.placeholder='passsword...'"
+      /></label>
+
+      <button type="submit" class="login_button">Login</button>
+    </form>
+  </div>
+  <div class="action">
+    <button (click)="back()" class="button">Back</button>
+    <button (click)="modeHandler()" class="button">Register</button>
+  </div>
+</div>
+<!-- ----------------------REGISTER MODE--------------------------- -->
+<div *ngIf="!loginMode" class="cardRegister">
+  <div class="title"><h1>Sign up</h1></div>
+  <div class="form">
+    <form
+      autocomplete="off"
+      [formGroup]="registerForm"
+      (submit)="submitRegistrationHandler()"
+    >
+      <!-- EMAIL LABEL -->
+      <label class="label"
+        >Email<input formControlName="email" type="text"
+      /></label>
+      <div
+        class="error"
+        *ngIf="
+          registerForm.get('email')?.touched && registerForm.get('email')?.dirty
+        "
+      >
+        <div
+          class="error"
+          *ngIf="registerForm.get('email')?.hasError('required')"
+        >
+          <small>Email is required</small>
+        </div>
+        <div class="error" *ngIf="registerForm.get('email')?.hasError('email')">
+          Email is invalid
+        </div>
+      </div>
+      <!-- USERNAME LABEL -->
+      <label class="label"
+        >Username<input formControlName="username" type="text"
+      /></label>
+      <div
+        *ngIf="
+          registerForm.get('username')?.touched ||
+          registerForm.get('username')?.dirty
+        "
+      >
+        <div
+          class="error"
+          *ngIf="registerForm.get('username')?.hasError('required')"
+          class="error"
+        >
+          Field username is required
+        </div>
+        <div
+          class="error"
+          *ngIf="registerForm.get('username')?.getError('usernameExist')"
+        >
+          Username already exist
+        </div>
+        <div class="error" *ngIf="registerForm.get('username')?.pending">
+          Validating username...
+        </div>
+        <div
+          *ngIf="
+            registerForm.get('username')?.getError('minlength') as errorLength
+          "
+          class="error"
+        >
+          Field has to have at least {{ errorLength.requiredLength }} letters
+        </div>
+      </div>
+      <!-- FIRST NAME LABEL -->
+      <label class="label"
+        >First name<input formControlName="firstname" type="text"
+      /></label>
+      <div
+        *ngIf="
+          registerForm.get('firstname')?.touched &&
+          registerForm.get('firstname')?.dirty
+        "
+      >
+        <small *ngIf="registerForm.get('firstname')?.hasError('reguired')">
+          First Name is required
+        </small>
+      </div>
+
+      <!-- LAST NAME LABEL -->
+      <label class="label"
+        >Last name<input formControlName="lastname" type="text"
+      /></label>
+      <div
+        *ngIf="
+          registerForm.get('lastname')?.touched &&
+          registerForm.get('lastname')?.dirty
+        "
+      >
+        <small *ngIf="registerForm.get('lastname')?.hasError('reguired')">
+          Last Name is required
+        </small>
+      </div>
+      <!-- CITY LABEL -->
+      <label class="label"
+        >City<input formControlName="city" type="text"
+      /></label>
+      <div
+        *ngIf="
+          registerForm.get('city')?.touched && registerForm.get('city')?.dirty
+        "
+      >
+        <small *ngIf="registerForm.get('city')?.hasError('reguired')">
+          City is required
+        </small>
+      </div>
+      <!-- COUNTRY LABEL -->
+      <label class="label"
+        >Country<input formControlName="country" type="text"
+      /></label>
+      <div
+        *ngIf="
+          registerForm.get('country')?.touched &&
+          registerForm.get('country')?.dirty
+        "
+      >
+        <small *ngIf="registerForm.get('country')?.hasError('reguired')">
+          Country is required
+        </small>
+      </div>
+      <!-- PASSWORD LABEL -->
+
+      <label class="label"
+        >Password<input
+          formControlName="password"
+          type="password"
+          passwordValidate="password"
+      /></label>
+      <div
+        *ngIf="
+          registerForm.get('password')?.touched &&
+          registerForm.get('password')?.dirty
+        "
+      >
+        <small
+          class="error"
+          *ngIf="registerForm.get('password')?.hasError('badPassword') as er"
+        >
+          Password has contains uppercases, lowercases, special..., and minimum
+          8 characters
+        </small>
+        <small
+          class="error"
+          *ngIf="registerForm.get('password')?.hasError('required')"
+        >
+          Password is required
+        </small>
+      </div>
+      <!-- REPEAT PASSWORD  -->
+      <label class="label"
+        >Repeat Password
+        <input formControlName="repeatPassword" type="password"
+      /></label>
+      <div
+        *ngIf="
+          registerForm.get('repeatPassword')?.touched &&
+          registerForm.get('repeatPassword')?.dirty
+        "
+      >
+        <div
+          class="error"
+          *ngIf="registerForm.get('repeatPassword')?.hasError('required')"
+        >
+          Matching password is required
+        </div>
+        <div
+          class="error"
+          *ngIf="registerForm.get('repeatPassword')?.errors?.['matchPasswords']"
+        >
+          Passwords are not contain
+        </div>
+      </div>
+      <button class="login_button">Submit</button>
+    </form>
+  </div>
+  <div class="action">
+    <button
+      [disabled]="!registerForm.valid"
+      (click)="modeHandler()"
+      class="button"
+    >
+      Back
+    </button>
+  </div>
+</div>

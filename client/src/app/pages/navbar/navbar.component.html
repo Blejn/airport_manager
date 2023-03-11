@@ -1,0 +1,16 @@
+<div class="navbar">
+<div  class="navbar-left">
+      <a routerLink="/home" >  <button (click)="navigateToHomePage()" class="button">Home</button></a>
+
+    <button (click)="navigateToFlyPage()" class="button">Flights</button>
+
+</div>
+<div class="navbar-right">
+    <button  *ngIf="user" (click)="navigateToTicketsPage()"  class="button" >My Tickets</button>
+
+    <button  *ngIf="user" (click)="navigateToLoginPage()"  class="button" >{{user.firstname}}</button>
+    <button  *ngIf="!user" (click)="navigateToLoginPage()" class="button">Login</button>
+
+
+</div>
+</div>

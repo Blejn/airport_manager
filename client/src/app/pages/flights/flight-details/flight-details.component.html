@@ -1,0 +1,142 @@
+<div class="container">
+
+ <div class="container_table">
+    <form [formGroup]="ticketForm" >
+
+
+      <mat-grid-list [cols]="breakpoint" rowHeight="2:1" (window:resize)="onResize($event)">
+
+  <mat-grid-tile>
+    <div class="details">
+        <h2 class="details_title">Departure Details</h2>
+        <div class="details_info">
+          <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>City</mat-label>
+    <input formControlName ="departure_city" readonly="" matInput >
+  </mat-form-field>
+
+
+
+         <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Country</mat-label>
+    <input  formControlName ="departure_country" readonly="" matInput  >
+  </mat-form-field>
+
+
+         <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Time</mat-label>
+    <input  formControlName ="departure_time" readonly="" matInput  >
+    <!-- value="{{flight.departure_time | date: 'short':'UTC'}}" -->
+  </mat-form-field>
+        </div>
+
+
+    </div>
+  </mat-grid-tile>
+
+
+
+
+
+   <mat-grid-tile>
+    <div class="details">
+        <h2 class="details_title">Destination Details</h2>
+        <div class="details_info">
+          <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>City</mat-label>
+    <input  formControlName ="destination_city" readonly="" matInput  >
+  </mat-form-field>
+
+
+
+         <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Country</mat-label>
+    <input formControlName ="destination_country"  readonly="" matInput  >
+  </mat-form-field>
+
+
+         <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Time</mat-label>
+    <input formControlName ="destination_time" readonly="" matInput  >
+  </mat-form-field>
+        </div>
+
+
+    </div>
+  </mat-grid-tile>
+
+
+
+   <mat-grid-tile>
+    <div class="details">
+        <h2 class="details_title">Flight Details</h2>
+        <div class="details_info">
+          <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Number</mat-label>
+    <input formControlName ="flightNumber" readonly="" matInput >
+  </mat-form-field>
+
+
+
+
+
+
+         <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Time flight</mat-label>
+    <input readonly="" matInput value="{{hours}} hours" >
+  </mat-form-field>
+        </div>
+
+
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <div class="details">
+        <h2 class="details_title">User Details</h2>
+        <div class="details_user_info">
+          <div class="details_user_info_column">
+          <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>First name </mat-label>
+    <input  formControlName ="firstName"  matInput  >
+  </mat-form-field>
+
+
+
+         <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Last name </mat-label>
+    <input formControlName ="lastName" matInput  >
+  </mat-form-field>
+
+        </div>
+          <div class="details_user_info_column">
+
+         <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input  formControlName ="email"  matInput  >
+  </mat-form-field>
+           <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Pin</mat-label>
+    <input formControlName ="pin"  matInput  >
+  </mat-form-field>
+
+       </div>
+
+    </div>
+                <small *ngIf="isPayment" style="margin:10px; color:green">PAYMENT IS ACCEPTED</small>
+
+           <div>
+               <button  (click)="openModal()" class="button" color="accent">Payment</button>
+               <button (click)="createTicket()" [disabled]="ticketForm.invalid"   class="button" color="accent">Buy</button>
+
+</div>
+
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+</form>
+
+</div>
+
+<app-modal-card (payEvent)="acceptPayment($event)"   (closeEvent)="closeModal($event)" *ngIf="isModal"></app-modal-card>
+</div>

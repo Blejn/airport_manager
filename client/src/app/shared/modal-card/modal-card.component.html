@@ -1,0 +1,105 @@
+<div (click)="closeModal()" #background class="container_background"></div>
+<div class="container">
+  <div class="card">
+    <div class="card_title">
+      <div class="credit_card">
+        <div class="card_chip">
+          <img src="" alt="" />
+        </div>
+        <div class="card_stamp"></div>
+        <div class="card_number">
+          <span *ngIf="!cardNumbers">1234 1234 1234 1234</span>
+          <span>{{ cardNumbers | creditCard }}</span>
+        </div>
+        <div class="card_info">
+          <div class="cardholder_name">
+            <span class="second-state" *ngIf="!fullName">full name</span>
+            <span class="second-state" *ngIf="fullName">{{ fullName }}</span>
+          </div>
+          <div class="card_expiration">
+            <div class="text_label"></div>
+
+            <span *ngIf="finalDateMM">
+              {{ finalDateMM }}
+            </span>
+            <span *ngIf="!finalDateMM"> MM </span>
+            <span> / </span>
+            <span *ngIf="!finalDateYY"> YY </span>
+
+            <span *ngIf="finalDateMM">
+              {{ finalDateYY }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card_content">
+      <form [formGroup]="formCard" class="example-form">
+        <div class="input_name">
+          <label class="form-label">Credit Card</label>
+          <input
+            formControlName="cardNumbers"
+            [(ngModel)]="cardNumbers"
+            name="credit-number"
+            class="cc-number card-num"
+            max="16"
+            placeholder="XXXX XXXX XXXX XXXX"
+          />
+        </div>
+
+        <div class="input_card_number">
+          <label class="form-label">Full name</label>
+          <input
+            formControlName="fullName"
+            [(ngModel)]="fullName"
+            name="credit-fullName"
+            class="card-num"
+            type="text"
+            placeholder="Full Name"
+          />
+        </div>
+
+        <div class="expiration_security">
+          <input
+            formControlName="finalDateMM"
+            [(ngModel)]="finalDateMM"
+            name="credit-dateEndMM"
+            class="card-num"
+            maxlength="2"
+            type="number"
+            placeholder="MM"
+          />
+
+          <input
+            formControlName="finalDateYY"
+            [(ngModel)]="finalDateYY"
+            name="credit-dateEndYY"
+            class="card-num"
+            maxlength="2"
+            type="number"
+            placeholder="YY"
+          />
+        </div>
+
+        <div></div>
+      </form>
+    </div>
+
+    <div class="card_action">
+      <button (click)="reset()" class="button" color="accent">Reset</button>
+
+      <button (click)="closeModal()" class="button" color="accent">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        (click)="addPayment()"
+        class="button"
+        color="accent"
+      >
+        Add Payment
+      </button>
+    </div>
+  </div>
+</div>

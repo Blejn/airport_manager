@@ -1,0 +1,205 @@
+.container {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 998;
+  background: linear-gradient(
+    0deg,
+    rgba(48, 47, 47, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 30%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+.container_background {
+  margin: 0;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    0deg,
+    rgba(48, 47, 47, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 30%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+.card {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
+  height: 70vh;
+  z-index: 1002;
+  border: 1px solid white;
+  gap: 2rem;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  font-family: "Droid Serif", serif;
+}
+.card_title {
+  display: block;
+  padding: 0;
+  top: 0;
+  margin: 0;
+}
+/* CREDIT CARD */
+.credit_card {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 15rem;
+  z-index: 1;
+  width: 25rem;
+  border-radius: 10px;
+  border: 1px solid white;
+  background: linear-gradient(45deg, #6097cb 0%, #11627d 50%, #29586b 100%);
+}
+.card_chip {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/chip.png") no-repeat center center;
+  background-size: cover;
+}
+.card_stamp {
+  background-image: url("/assets/visa.png") no-repeat center center;
+}
+.card_number {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+
+  z-index: 999;
+}
+span {
+  left: 0;
+  top: 0;
+  font-size: x-large;
+  display: block;
+  position: relative;
+  width: 100%;
+  color: #d6e1e6;
+  padding-left: 2px;
+  white-space: nowrap;
+}
+
+.card_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 5rem;
+}
+.card_number {
+  position: absolute;
+}
+.card_expiration {
+  display: flex;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+.card_expiration > span {
+  font-size: medium;
+}
+.text_label {
+  color: gray;
+}
+.cardholder_name {
+  position: relative;
+  font-size: medium;
+  display: flex;
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+}
+mat-label {
+  color: rgb(255, 255, 255);
+}
+input {
+  border-color: white;
+  color: white;
+}
+.input_name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.card_action {
+  position: absolute;
+  bottom: 2rem;
+}
+.example-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.expiration_security {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.card-num {
+  border-radius: 5px;
+  background-color: transparent;
+  height: 2rem;
+  width: 12rem;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.card-num::after {
+  border-radius: 5px;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+}
+.card-num:focus {
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+}
+.form-label {
+  margin-right: 1rem;
+}
+.second-state {
+  font-size: 1rem;
+}
+.button {
+  font-size: 1rem;
+  border-radius: 5px;
+  color: white;
+  background: transparent;
+  border: none;
+  transition: 0.2s ease-out;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

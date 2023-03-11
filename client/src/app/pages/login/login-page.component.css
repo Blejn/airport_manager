@@ -1,0 +1,120 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20rem;
+  width: 20rem;
+  padding: 1rem;
+  background: linear-gradient(
+    0deg,
+    rgba(99, 92, 92, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 30%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  border-radius: 10px;
+}
+.cardRegister {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40rem;
+  width: 20rem;
+  background: linear-gradient(
+    0deg,
+    rgba(99, 92, 92, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 30%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  border-radius: 10px;
+  overflow: hidden;
+}
+.title {
+  height: 5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+input {
+  max-width: 10rem;
+  height: 1.3rem;
+  border: none;
+  border-bottom: 1px white solid;
+  padding: 0.5rem;
+  color: white;
+  background-color: transparent;
+}
+input::placeholder {
+  color: rgb(175, 170, 170);
+}
+input::focus {
+  border: none;
+  color: white;
+  outline: none;
+}
+input::active {
+  border: none;
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+input:focus {
+  color: white;
+  outline: none;
+  border-bottom: 3px solid white;
+}
+
+.login_button {
+  max-width: 5rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+.login_button {
+  width: 5rem;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  transition: 0.2 ease-out;
+}
+.action {
+  display: flex;
+  margin-top: 1rem;
+  flex-direction: row;
+  gap: 1rem;
+}
+.button {
+  width: 5rem;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  transition: 0.2 ease-out;
+}
+.login_button:hover {
+  transform: scale(1.1);
+}
+.button:hover {
+  transform: scale(1.1);
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
